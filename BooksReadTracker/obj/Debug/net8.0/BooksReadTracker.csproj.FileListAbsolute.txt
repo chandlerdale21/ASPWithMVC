@@ -550,3 +550,4 @@ C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTracker\obj\Deb
 C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTracker\obj\Debug\net8.0\BooksReadTracker.pdb
 C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTracker\obj\Debug\net8.0\BooksReadTracker.genruntimeconfig.cache
 C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTracker\obj\Debug\net8.0\ref\BooksReadTracker.dll
+C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTracker\obj\Debug\net8.0\BooksReadTracker.sourcelink.json

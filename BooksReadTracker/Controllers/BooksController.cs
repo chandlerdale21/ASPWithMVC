@@ -1,17 +1,16 @@
-﻿using BooksReadTracker.Data;
+﻿using BooksReadTrackerDBLibrary;
 using BooksReadTrackerModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
 namespace BooksReadTracker.Controllers
 {
     public class BooksController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BooksReadTrackerDbContext _context;
         private readonly SelectList _categories;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(BooksReadTrackerDbContext context)
         {
             _context = context;
             _categories = new SelectList(_context.Categories, "Id", "Name");

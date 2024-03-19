@@ -2113,6 +2113,7 @@
       },
       "BooksReadTrackerDBLibrary/1.0.0": {
         "dependencies": {
+          "BooksReadTrackerModels": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3",
           "Microsoft.Extensions.Configuration": "8.0.0",

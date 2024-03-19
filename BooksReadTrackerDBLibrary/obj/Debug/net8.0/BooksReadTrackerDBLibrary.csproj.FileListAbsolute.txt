@@ -26,3 +26,7 @@ C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrar
 C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\obj\Debug\net8.0\BooksReadTrackerDBLibrary.pdb
 C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\obj\Debug\net8.0\BooksReadTrackerDBLibrary.genruntimeconfig.cache
 C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\obj\Debug\net8.0\ref\BooksReadTrackerDBLibrary.dll
+C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\obj\Debug\net8.0\BooksReadTrackerDBLibrary.sourcelink.json
+C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\bin\Debug\net8.0\BooksReadTrackerModels.dll
+C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\bin\Debug\net8.0\BooksReadTrackerModels.pdb
+C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerDBLibrary\obj\Debug\net8.0\BooksReadTrackerDBLibrary.csproj.CopyComplete

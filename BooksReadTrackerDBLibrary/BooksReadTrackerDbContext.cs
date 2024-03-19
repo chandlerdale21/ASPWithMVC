@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BooksReadTrackerModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 
@@ -8,6 +9,11 @@ namespace BooksReadTrackerDBLibrary
     public class BooksReadTrackerDbContext : DbContext
     {
         private static IConfigurationRoot _configuration;
+
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
         public BooksReadTrackerDbContext()
         {
 

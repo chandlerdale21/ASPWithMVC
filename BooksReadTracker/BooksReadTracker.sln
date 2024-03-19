@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksReadTracker", "BooksRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksReadTrackerModels", "..\BooksReadTrackerModels\BooksReadTrackerModels.csproj", "{D0305F61-8B90-43FB-9786-3898C4A52E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksReadTrackerDBLibrary", "..\BooksReadTrackerDBLibrary\BooksReadTrackerDBLibrary.csproj", "{507B5893-CD9E-4BB2-BE5C-2A2620ACBF20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksReadTrackerDBLibrary", "..\BooksReadTrackerDBLibrary\BooksReadTrackerDBLibrary.csproj", "{507B5893-CD9E-4BB2-BE5C-2A2620ACBF20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

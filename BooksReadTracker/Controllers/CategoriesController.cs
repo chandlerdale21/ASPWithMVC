@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using BooksReadTracker.Data;
+﻿using BooksReadTrackerDBLibrary;
 using BooksReadTrackerModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksReadTracker.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BooksReadTrackerDbContext _context;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(BooksReadTrackerDbContext context)
         {
             _context = context;
         }

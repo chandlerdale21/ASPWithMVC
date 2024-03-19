@@ -31,7 +31,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\chand\\workspace\\mssa\\projects\\BooksReadTracker\\BooksReadTrackerModels\\BooksReadTrackerModels.csproj": {
+                "projectPath": "C:\\Users\\chand\\workspace\\mssa\\projects\\BooksReadTracker\\BooksReadTrackerModels\\BooksReadTrackerModels.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
