@@ -9,15 +9,3 @@ C:\Users\chand\workspace\mssa\projects\BooksReadTrackerModels\obj\Debug\net8.0\B
 C:\Users\chand\workspace\mssa\projects\BooksReadTrackerModels\obj\Debug\net8.0\refint\BooksReadTrackerModels.dll
 C:\Users\chand\workspace\mssa\projects\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.pdb
 C:\Users\chand\workspace\mssa\projects\BooksReadTrackerModels\obj\Debug\net8.0\ref\BooksReadTrackerModels.dll
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\bin\Debug\net8.0\BooksReadTrackerModels.deps.json
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\bin\Debug\net8.0\BooksReadTrackerModels.dll
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\bin\Debug\net8.0\BooksReadTrackerModels.pdb
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.AssemblyInfoInputs.cache
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.AssemblyInfo.cs
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.csproj.CoreCompileInputs.cache
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.dll
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\refint\BooksReadTrackerModels.dll
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.pdb
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\ref\BooksReadTrackerModels.dll
-C:\Users\chand\workspace\mssa\projects\BooksReadTracker\BooksReadTrackerModels\obj\Debug\net8.0\BooksReadTrackerModels.sourcelink.json

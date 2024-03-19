@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksReadTrackerModels", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksReadTrackerDBLibrary", "..\BooksReadTrackerDBLibrary\BooksReadTrackerDBLibrary.csproj", "{507B5893-CD9E-4BB2-BE5C-2A2620ACBF20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksReadTrackerDatabaseLayer", "..\BooksReadTrackerDatabaseLayer\BooksReadTrackerDatabaseLayer.csproj", "{E3BC8E9D-6B23-4C06-B33C-C0253CFAF6B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksReadTrackerServiceLayer", "..\BooksReadTrackerServiceLayer\BooksReadTrackerServiceLayer.csproj", "{EB05781B-6930-48C7-9B38-EB4564B486B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{507B5893-CD9E-4BB2-BE5C-2A2620ACBF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{507B5893-CD9E-4BB2-BE5C-2A2620ACBF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{507B5893-CD9E-4BB2-BE5C-2A2620ACBF20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BC8E9D-6B23-4C06-B33C-C0253CFAF6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BC8E9D-6B23-4C06-B33C-C0253CFAF6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BC8E9D-6B23-4C06-B33C-C0253CFAF6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BC8E9D-6B23-4C06-B33C-C0253CFAF6B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
