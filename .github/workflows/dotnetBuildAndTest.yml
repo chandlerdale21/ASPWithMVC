@@ -21,13 +21,13 @@ jobs:
         dotnet-version: '8.0.x' # Ensure this matches the version used in your project
 
     - name: Restore dependencies
-      run: dotnet restore ASPWithMVC/BooksReadTracker/BooksReadTracker.sln
+      run: dotnet restore BooksReadTracker/BooksReadTracker.sln
      
 
     - name: Build
-      run: dotnet build ASPWithMVC/BooksReadTracker/BooksReadTracker.sln --no-restore
+      run: dotnet build BooksReadTracker/BooksReadTracker.sln --no-restore
       
 
     - name: Test
-      run: dotnet test ASPWithMVC/BooksReadTracker/BooksReadTracker.sln --no-build --verbosity normal
+      run: dotnet test BooksReadTracker/BooksReadTracker.sln --no-build --verbosity normal
       
