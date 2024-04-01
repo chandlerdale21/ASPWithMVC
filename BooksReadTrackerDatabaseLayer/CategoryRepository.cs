@@ -1,36 +1,73 @@
-﻿using BooksReadTrackerModels;
+﻿using BooksReadTrackerDBLibrary;
+using BooksReadTrackerModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksReadTrackerDatabaseLayer
 {
     public class CategoryRepository : ICategoriesRepository
     {
-        public Task<List<Category>> GetAllAsync()
+        private readonly BooksReadTrackerDbContext _context;
+
+        public CategoryRepository(BooksReadTrackerDbContext context)
         {
-            throw new NotImplementedException();
-        }
-        public Task<Category?> GetAsync(int id)
-        {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<int> AddOrUpdateAsync(Category category)
+        public async Task<List<Category>> GetAllAsync()
         {
-            throw new NotImplementedException();
+
+            return await _context.Categories.ToListAsync();
         }
 
-        public Task<int> DeleteAsync(Category category)
+        public async Task<Category?> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Categories.FindAsync(id);
         }
 
-        public Task<int> DeleteAsync(int id)
+        public async Task<int> AddOrUpdateAsync(Category category)
         {
-            throw new NotImplementedException();
+            if (category.Id == 0)
+            {
+                _context.Categories.Add(category);
+            }
+            else
+            {
+                var dbCategory = await _context.Categories.FindAsync(category.Id);
+                if (dbCategory != null)
+                {
+                    dbCategory.Name = category.Name;
+                    _context.Categories.Update(dbCategory);
+                }
+                else
+                {
+                    // Handle the case where the category doesn't exist.
+                    return 0; // Or throw an exception.
+                }
+            }
+            await _context.SaveChangesAsync();
+            return category.Id;
         }
 
-        public Task<bool> ExistsAsync(int id)
+        public async Task<int> DeleteAsync(Category category)
         {
-            throw new NotImplementedException();
+            return await DeleteAsync(category.Id);
+        }
+
+        public async Task<int> DeleteAsync(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null)
+            {
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+                return id;
+            }
+            return 0; // Or handle the case where the category doesn't exist.
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await _context.Categories.FirstOrDefaultAsync(m => m.Id == id) != null;
         }
     }
 }

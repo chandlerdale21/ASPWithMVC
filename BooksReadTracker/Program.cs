@@ -1,5 +1,7 @@
 using BooksReadTracker.Data;
+using BooksReadTrackerDatabaseLayer;
 using BooksReadTrackerDBLibrary;
+using BooksReadTrackerServiceLayer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,14 @@ namespace BooksReadTracker
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+
+            //add our own services:
+            builder.Services.AddScoped<IBooksRepository, BooksRepository>();
+            builder.Services.AddScoped<ICategoriesRepository, CategoryRepository>();
+
+            builder.Services.AddScoped<IBooksServices, BooksService>();
+            builder.Services.AddScoped<ICategoriesService, CategoriesService>();
 
             var app = builder.Build();
 

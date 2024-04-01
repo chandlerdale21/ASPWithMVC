@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksReadTrackerDatabaseLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksReadTrackerServiceLayer", "..\BooksReadTrackerServiceLayer\BooksReadTrackerServiceLayer.csproj", "{EB05781B-6930-48C7-9B38-EB4564B486B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBooksReadTracker", "..\TestBooksReadTracker\TestBooksReadTracker.csproj", "{73E143B8-A9AE-4A14-840E-73D418F9F3BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB05781B-6930-48C7-9B38-EB4564B486B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E143B8-A9AE-4A14-840E-73D418F9F3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E143B8-A9AE-4A14-840E-73D418F9F3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E143B8-A9AE-4A14-840E-73D418F9F3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E143B8-A9AE-4A14-840E-73D418F9F3BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

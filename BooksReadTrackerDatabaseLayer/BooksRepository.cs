@@ -10,6 +10,13 @@ namespace BooksReadTrackerDatabaseLayer
     {
 
         private readonly BooksReadTrackerDbContext _context;
+
+
+        public BooksRepository(BooksReadTrackerDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<List<Book>> GetAllAsync()
         {
             return await _context.Books
@@ -27,10 +34,20 @@ namespace BooksReadTrackerDatabaseLayer
 
         public async Task<int> AddOrUpdateAsync(Book book)
         {
-            if (book.Id == null)
+            if (book == null)
             {
-                throw new ArgumentException(nameof(book));
+                throw new ArgumentException("Book cannot be null.", nameof(book));
             }
+
+            //var catIdeez = await _context.Categories.Select(x => new {x.Id}).ToListAsync();
+            //if(!catIdeez.Contains(book.CategoryId))
+
+            bool categoryExists = await _context.Categories.AnyAsync(c => c.Id == book.CategoryId);
+            if (!categoryExists)
+            {
+                throw new ArgumentException($"Category with Id {book.CategoryId} does not exist.", nameof(book.CategoryId));
+            }
+
             if (book.Id == 0)
             {
                 return await Add(book);
@@ -42,7 +59,7 @@ namespace BooksReadTrackerDatabaseLayer
         }
         private async Task<int> Update(Book book)
         {
-            var existing = await _context.Books.FirstOrDefaultAsync(x => x.Id == book.id);
+            var existing = await _context.Books.FirstOrDefaultAsync(x => x.Id == book.Id);
             if (existing == null)
             {
                 throw new ArgumentException($"Poster ID {book.Id} Not found");
