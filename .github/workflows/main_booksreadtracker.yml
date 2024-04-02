@@ -45,6 +45,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'BooksReadTracker'
-          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B746E142DD464AF5A26553853A42CD6A }}
           package: ${{env.DOTNET_ROOT}}/myapp
      
