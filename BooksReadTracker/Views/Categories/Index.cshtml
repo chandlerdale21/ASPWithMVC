@@ -4,11 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <div class="row pt-4 pb-4">
+        <div class="col-6">
+            <h1 class="text-primary">Categories</h1>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-primary rounded-pill">Create New Category</a>
+        </div>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
