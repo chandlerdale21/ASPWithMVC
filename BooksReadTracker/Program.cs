@@ -36,6 +36,18 @@ namespace BooksReadTracker
             builder.Services.AddScoped<IBooksServices, BooksService>();
             builder.Services.AddScoped<ICategoriesService, CategoriesService>();
 
+
+            var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connectionString).Options;
+            using (var context = new ApplicationDbContext(contextOptions))
+            {
+                context.Database.Migrate();
+            }
+            var contextOptions2 = new DbContextOptionsBuilder<BooksReadTrackerDbContext>().UseSqlServer(connectionString).Options;
+            using (var context = new BooksReadTrackerDbContext(contextOptions2))
+            {
+                context.Database.Migrate();
+            }
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
