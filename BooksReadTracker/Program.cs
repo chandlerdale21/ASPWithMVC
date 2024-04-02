@@ -42,7 +42,7 @@ namespace BooksReadTracker
             {
                 context.Database.Migrate();
             }
-            var contextOptions2 = new DbContextOptionsBuilder<BooksReadTrackerDbContext>().UseSqlServer(connectionString).Options;
+            var contextOptions2 = new DbContextOptionsBuilder<BooksReadTrackerDbContext>().UseSqlServer(BooksReadDbConnection).Options;
             using (var context = new BooksReadTrackerDbContext(contextOptions2))
             {
                 context.Database.Migrate();
