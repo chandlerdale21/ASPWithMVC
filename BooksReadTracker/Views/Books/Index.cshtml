@@ -45,7 +45,7 @@
                 <td>
                     @if (!string.IsNullOrWhiteSpace(item.FilePath))
                     {
-                        <img src="@item.FilePath" alt="item.Name" style="width:80px;height:100px" />
+                        <img src="@item.FilePath" alt="@item.Name" style="width:80px;height:100px" onerror="this.src='https://talkimages.blob.core.windows.net/mssaccad13/noImage.png'" />
                     }
                     else
                     {
