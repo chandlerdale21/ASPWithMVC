@@ -46,6 +46,11 @@ namespace BooksReadTrackerDBLibrary.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");

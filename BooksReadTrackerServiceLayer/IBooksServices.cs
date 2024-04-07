@@ -4,11 +4,11 @@ namespace BooksReadTrackerServiceLayer
 {
     public interface IBooksServices
     {
-        Task<List<Book>> GetAllAsync();
-        Task<Book?> GetAsync(int id);
-        Task<int> AddOrUpdateAsync(Book book);
-        Task<int> DeleteAsync(Book book);
-        Task<int> DeleteAsync(int id);
-        Task<bool> ExistsAsync(int id);
+        Task<List<Book>> GetAllAsync(string userId);
+        Task<Book?> GetAsync(int id, string userId);
+        Task<int> AddOrUpdateAsync(Book book, string userId);
+        Task<int> DeleteAsync(Book book, string userId);
+        Task<int> DeleteAsync(int id, string userId);
+        Task<bool> ExistsAsync(int id, string userId);
     }
 }

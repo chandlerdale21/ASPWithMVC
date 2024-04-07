@@ -1,38 +1,47 @@
-﻿using BooksReadTrackerModels;
+﻿using BooksReadTrackerDatabaseLayer;
+using BooksReadTrackerModels;
 
 namespace BooksReadTrackerServiceLayer;
 
 public class BooksService : IBooksServices
 {
-    private readonly IBooksServices _booksRepository;
+    private IBooksRepository _booksRepository;
 
-    Task<int> IBooksServices.AddOrUpdateAsync(Book book)
+
+    public BooksService(IBooksRepository booksRepository)
     {
-        return _booksRepository.AddOrUpdateAsync(book);
+        _booksRepository = booksRepository;
     }
 
-    Task<int> IBooksServices.DeleteAsync(Book book)
+
+
+    Task<int> IBooksServices.AddOrUpdateAsync(Book book, string userId)
     {
-        return _booksRepository.DeleteAsync(book);
+        return _booksRepository.AddOrUpdateAsync(book, userId);
     }
 
-    Task<int> IBooksServices.DeleteAsync(int id)
+    Task<int> IBooksServices.DeleteAsync(Book book, string userId)
     {
-        return _booksRepository.DeleteAsync(id);
+        return _booksRepository.DeleteAsync(book, userId);
     }
 
-    Task<bool> IBooksServices.ExistsAsync(int id)
+    Task<int> IBooksServices.DeleteAsync(int id, string userId)
     {
-        return _booksRepository.ExistsAsync(id);
+        return _booksRepository.DeleteAsync(id, userId);
     }
 
-    Task<List<Book>> IBooksServices.GetAllAsync()
+    Task<bool> IBooksServices.ExistsAsync(int id, string userId)
     {
-        return _booksRepository.GetAllAsync();
+        return _booksRepository.ExistsAsync(id, userId);
     }
 
-    Task<Book?> IBooksServices.GetAsync(int id)
+    Task<List<Book>> IBooksServices.GetAllAsync(string userId)
     {
-        return _booksRepository.GetAsync(id);
+        return _booksRepository.GetAllAsync(userId);
+    }
+
+    Task<Book?> IBooksServices.GetAsync(int id, string userId)
+    {
+        return _booksRepository.GetAsync(id, userId);
     }
 }
