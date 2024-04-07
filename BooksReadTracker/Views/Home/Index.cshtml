@@ -1,8 +1,22 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p style="font-size: 1.3em;">Start tracking your recent <a asp-area="" asp-controller="Books" asp-action="Index">Books</a> reads.</p>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p style="font-size: 1.3em;">Please <a asp-area="Identity" asp-page="/Account/Login" style="color: #ff0000;">Login</a> to start tracking your recent reads.</p>
+    </div>
+}

@@ -24,7 +24,7 @@
         <dd class="col-sm-10">
             @if (!string.IsNullOrWhiteSpace(Model.FilePath))
             {
-                <img src="@Model.FilePath" alt="Image" style="width:150px;" />
+                <img src="@Model.FilePath" alt="Image" style="width:150px;" onerror="this.src='https://talkimages.blob.core.windows.net/mssaccad13/noImage.png'" />
             }
             else
             {

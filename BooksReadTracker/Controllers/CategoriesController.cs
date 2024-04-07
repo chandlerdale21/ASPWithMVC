@@ -1,12 +1,15 @@
-﻿using BooksReadTracker.Models;
+﻿using BooksReadTracker.Data;
+using BooksReadTracker.Models;
 using BooksReadTrackerModels;
 using BooksReadTrackerServiceLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace BooksReadTracker.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         //private readonly BooksReadTrackerDbContext _context;
@@ -48,6 +51,7 @@ namespace BooksReadTracker.Controllers
 
             return View(category);
         }
+        [Authorize(Roles = "Admin")]
 
         // GET: Categories/Create
         public IActionResult Create()
@@ -60,6 +64,7 @@ namespace BooksReadTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
         {
             if (ModelState.IsValid)
@@ -78,6 +83,7 @@ namespace BooksReadTracker.Controllers
             _memoryCache.Remove(CacheConstants.CATEGORIES_KEY);
         }
         // GET: Categories/Edit/5
+        [Authorize(Roles = UserRolesService.ADMIN_ROLE_NAME)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,6 +105,7 @@ namespace BooksReadTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = UserRolesService.ADMIN_ROLE_NAME)]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
         {
             if (id != category.Id)
@@ -132,6 +139,7 @@ namespace BooksReadTracker.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize(Roles = UserRolesService.ADMIN_ROLE_NAME)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,6 +159,7 @@ namespace BooksReadTracker.Controllers
         }
 
         // POST: Categories/Delete/5
+        [Authorize(Roles = UserRolesService.ADMIN_ROLE_NAME)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

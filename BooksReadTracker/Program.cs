@@ -25,6 +25,7 @@ namespace BooksReadTracker
 
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
@@ -35,6 +36,8 @@ namespace BooksReadTracker
 
             builder.Services.AddScoped<IBooksServices, BooksService>();
             builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+
+            builder.Services.AddScoped<IUserRolesService, UserRolesService>();
 
 
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connectionString).Options;
