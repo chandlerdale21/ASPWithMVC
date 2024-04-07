@@ -17,44 +17,51 @@ namespace BooksReadTrackerDatabaseLayer
             _context = context;
         }
 
-        public async Task<List<Book>> GetAllAsync()
+        public async Task<List<Book>> GetAllAsync(string userId)
         {
             return await _context.Books
                 .Include(x => x.Category)
+                .Where(x => x.UserId == userId)
                 .ToListAsync();
         }
-        public async Task<Book?> GetAsync(int id)
+        public async Task<Book?> GetAsync(int id, string userId)
         {
-            if (id <= 0)
-            {
-                return null;
-            }
-            return await _context.Books.Include(x => x.Category).FirstOrDefaultAsync(m => m.Id == id);
+            return await _context.Books.Include(x => x.Category).Where(x => x.UserId == userId).FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public async Task<int> AddOrUpdateAsync(Book book)
+        public async Task<int> AddOrUpdateAsync(Book book, string userId)
         {
             if (book == null)
             {
                 throw new ArgumentException("Book cannot be null.", nameof(book));
             }
-
-            //var catIdeez = await _context.Categories.Select(x => new {x.Id}).ToListAsync();
-            //if(!catIdeez.Contains(book.CategoryId))
-
-            bool categoryExists = await _context.Categories.AnyAsync(c => c.Id == book.CategoryId);
-            if (!categoryExists)
+            if (book.Id < 0)
             {
-                throw new ArgumentException($"Category with Id {book.CategoryId} does not exist.", nameof(book.CategoryId));
+                throw new ArgumentOutOfRangeException("Invalid Id");
             }
 
-            if (book.Id == 0)
+            if (string.IsNullOrWhiteSpace(userId)
+           || string.IsNullOrWhiteSpace(book.UserId)
+           || !book.UserId.Equals(userId, StringComparison.OrdinalIgnoreCase))
             {
-                return await Add(book);
+                throw new ArgumentNullException("UserId mismatch or unset on add/edit");
+            }
+
+            //make sure category is valid
+            var goodCategory = await _context.Categories.SingleOrDefaultAsync(x => x.Id == book.CategoryId);
+            if (goodCategory is null)
+            {
+                throw new ArgumentOutOfRangeException("Category not found");
+            }
+
+            //add or update
+            if (book.Id > 0)
+            {
+                return await Update(book);
             }
             else
             {
-                return await Update(book);
+                return await Add(book);
             }
         }
         private async Task<int> Update(Book book)
@@ -76,29 +83,40 @@ namespace BooksReadTrackerDatabaseLayer
 
         private async Task<int> Add(Book book)
         {
-            _context.Books.Add(book);
+            await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
             return book.Id;
         }
 
-        public async Task<int> DeleteAsync(Book book)
+        public async Task<int> DeleteAsync(Book book, string userId)
         {
-            return await DeleteAsync(book.Id);
+            ArgumentNullException.ThrowIfNull(book, "Item cannot be null");
+            return await DeleteAsync(book.Id, userId);
 
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(int id, string userId)
         {
-            var existing = await _context.Books.FirstOrDefaultAsync(m => m.Id == id);
+            ArgumentOutOfRangeException.ThrowIfNegative(id, "Invalid Id");
+            ArgumentOutOfRangeException.ThrowIfZero(id, "Invalid Id");
+            ArgumentException.ThrowIfNullOrWhiteSpace(userId, "UserId cannot be null or empty");
+
+            var existing = await _context.Books.FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
+
+            ArgumentNullException.ThrowIfNull(existing, "Item not found");
+
             _context.Books.Remove(existing);
             await _context.SaveChangesAsync();
             return existing.Id;
         }
 
-        public async Task<bool> ExistsAsync(int id)
+        public async Task<bool> ExistsAsync(int id, string userId)
         {
+            ArgumentOutOfRangeException.ThrowIfNegative(id, "Invalid Id");
+            ArgumentOutOfRangeException.ThrowIfZero(id, "Invalid Id");
+            ArgumentException.ThrowIfNullOrWhiteSpace(userId, "UserId cannot be null or empty");
 
-            return await _context.Books.FirstOrDefaultAsync(m => m.Id == id) != null;
+            return await _context.Books.FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId) != null;
         }
     }
 }

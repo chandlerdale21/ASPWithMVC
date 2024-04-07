@@ -1,19 +1,28 @@
 ﻿using BooksReadTrackerDBLibrary;
 using BooksReadTrackerModels;
+using BooksReadTrackerServiceLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+
+
 namespace BooksReadTracker.Controllers
 {
+    [Authorize]
     public class BooksController : Controller
     {
         private readonly BooksReadTrackerDbContext _context;
+        private readonly IBooksServices _booksServices;
         private readonly SelectList _categories;
 
-        public BooksController(BooksReadTrackerDbContext context)
+
+        public BooksController(BooksReadTrackerDbContext context, IBooksServices booksServices)
         {
             _context = context;
             _categories = new SelectList(_context.Categories, "Id", "Name");
+            _booksServices = booksServices;
         }
         //Get: Top10 Books
 
@@ -43,9 +52,9 @@ namespace BooksReadTracker.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Books
-                .Include(x => x.Category)
-                .ToListAsync());
+            var userId = await GetCurrentUserId();
+            var books = await _booksServices.GetAllAsync(userId);
+            return View(books ?? new List<Book>());
         }
 
         // GET: Books/Details/5
@@ -83,15 +92,22 @@ namespace BooksReadTracker.Controllers
         {
             if (book.CategoryId is null)
             {
-                ViewData["CategoryId"] = _categories;
+                ModelState.AddModelError("CategoryId", "Category is required");
+                ViewData["Categories"] = _categories;
                 return View(book);
             }
+            var userId = await GetCurrentUserId();
+            book.UserId = userId;
+
+            ModelState.Clear();
+            TryValidateModel(book);
+
             if (ModelState.IsValid)
             {
-                _context.Books.Add(book);
-                await _context.SaveChangesAsync();
+                await _booksServices.AddOrUpdateAsync(book, userId);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Categories"] = _categories;
             return View(book);
         }
 
@@ -186,5 +202,12 @@ namespace BooksReadTracker.Controllers
         {
             return _context.Books.Any(e => e.Id == id);
         }
+
+        protected async Task<string> GetCurrentUserId()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return userId;
+        }
+
     }
 }

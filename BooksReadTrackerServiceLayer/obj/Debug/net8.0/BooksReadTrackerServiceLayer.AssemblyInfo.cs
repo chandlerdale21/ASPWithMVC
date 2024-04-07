@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BooksReadTrackerServiceLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f791a039681d5ae444536916cfffe11e0bedfe6f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f25f518816288d6c3376ecce4ce8cb8aece594f")]
 [assembly: System.Reflection.AssemblyProductAttribute("BooksReadTrackerServiceLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BooksReadTrackerServiceLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

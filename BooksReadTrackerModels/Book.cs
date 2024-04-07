@@ -16,6 +16,11 @@ namespace BooksReadTrackerModels
         public virtual int? CategoryId { get; set; }
 
         public virtual Category? Category { get; set; }
+
+
+
+        [StringLength(64)]
+        public string UserId { get; set; }
     }
 
 
