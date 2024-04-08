@@ -88,7 +88,7 @@ namespace BooksReadTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,FilePath,CategoryId")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,Name,FilePath,CategoryId, Notes, PagesRead, TotalPages")] Book book)
         {
             if (book.CategoryId is null)
             {
@@ -96,6 +96,20 @@ namespace BooksReadTracker.Controllers
                 ViewData["Categories"] = _categories;
                 return View(book);
             }
+
+            //   if (!Int32.TryParse(book.PagesRead, out int pagesRead) ||
+            //!Int32.TryParse(book.TotalPages, out int totalPages))
+            //   {
+            //       ModelState.AddModelError("PagesRead", "Pages read and total pages must be valid integers");
+
+            //   }
+            //   else if (pagesRead > totalPages)
+            //   {
+
+            //       ModelState.AddModelError("PagesRead", "Pages read must be less than or equal to total pages");
+
+            //   }
+
             var userId = await GetCurrentUserId();
             book.UserId = userId;
 
@@ -107,6 +121,7 @@ namespace BooksReadTracker.Controllers
                 await _booksServices.AddOrUpdateAsync(book, userId);
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["Categories"] = _categories;
             return View(book);
         }

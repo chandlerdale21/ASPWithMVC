@@ -17,6 +17,17 @@ namespace BooksReadTrackerModels
 
         public virtual Category? Category { get; set; }
 
+        [StringLength(2048)]
+        public string Notes { get; set; }
+
+
+
+        [StringLength(64)]
+        public string TotalPages { get; set; }
+
+        [StringLength(64)]
+        public string PagesRead { get; set; }
+
 
 
         [StringLength(64)]

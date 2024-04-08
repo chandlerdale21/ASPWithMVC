@@ -30,6 +30,15 @@
                 @Html.DisplayNameFor(model => model.Category)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagesRead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPages)
+            </th>
+            <th>
                 Actions
             </th>
         </tr>
@@ -55,6 +64,16 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.Name)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PagesRead)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPages)
+                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
