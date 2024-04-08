@@ -30,7 +30,7 @@ namespace BooksReadTracker.Controllers
         {
             return View(await _context.Books
                 .Include(x => x.Category)
-                .OrderBy(x => x.Name)
+                .OrderByDescending(x => x.Id)
                 .Take(10)
                 .ToListAsync());
         }
