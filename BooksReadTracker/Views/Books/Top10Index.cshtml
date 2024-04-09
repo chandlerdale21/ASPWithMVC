@@ -32,21 +32,33 @@
             border-radius: 10px;
         }
 
-        .image-container a {
-            position: absolute;
-            top: 15.5rem;
-        }
-
     .icon-delete {
+        position: absolute;
+        top: 15.5rem;
         right: 5px;
     }
 
     .icon-edit {
-        left: 9.1rem;
+        position: absolute;
+        top: 15.5rem;
+        right: 35px;
     }
 
     .icon-information {
-        left: 7.5rem;
+        position: absolute;
+        top: 15.5rem;
+        right: 65px;
+    }
+
+    .no-word-break {
+        overflow-wrap: break-word;
+    }
+
+    .title-container {
+        max-height: 3.6rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 </style>
 
@@ -59,7 +71,7 @@
         {
             <div class="col-md-3 mb-3 custom-col-padding">
                 <div>
-                    <h6 class="margin-left" style="word-break: break-all !important;">@item.Name</h6>
+                    <h6 class="margin-left title-container" style="word-break: break-all !important;">@item.Name</h6>
                     <div class="image-container">
                         
                         <img src="@item.FilePath ?? 'https://talkimages.blob.core.windows.net/mssaccad13/noImage.png'" class="card-img-top book-cover" alt="@item.Name" onerror="this.src='https://talkimages.blob.core.windows.net/mssaccad13/noImage.png'">

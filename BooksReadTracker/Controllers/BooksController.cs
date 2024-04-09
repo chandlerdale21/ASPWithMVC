@@ -79,7 +79,7 @@ namespace BooksReadTracker.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = _categories;
+            ViewData["Categories"] = _categories;
             return View();
         }
 
@@ -96,25 +96,26 @@ namespace BooksReadTracker.Controllers
                 ViewData["Categories"] = _categories;
                 return View(book);
             }
-
-            //   if (!Int32.TryParse(book.PagesRead, out int pagesRead) ||
-            //!Int32.TryParse(book.TotalPages, out int totalPages))
-            //   {
-            //       ModelState.AddModelError("PagesRead", "Pages read and total pages must be valid integers");
-
-            //   }
-            //   else if (pagesRead > totalPages)
-            //   {
-
-            //       ModelState.AddModelError("PagesRead", "Pages read must be less than or equal to total pages");
-
-            //   }
-
             var userId = await GetCurrentUserId();
             book.UserId = userId;
 
             ModelState.Clear();
-            TryValidateModel(book);
+
+
+            if (!Int32.TryParse(book.PagesRead, out int pagesRead) ||
+         !Int32.TryParse(book.TotalPages, out int totalPages))
+            {
+                ModelState.AddModelError("PagesRead", "Pages read and total pages must be valid integers");
+
+            }
+            else if (pagesRead > totalPages)
+            {
+
+                ModelState.AddModelError("PagesRead", "Pages read must be less than or equal to total pages");
+
+            }
+
+
 
             if (ModelState.IsValid)
             {
@@ -122,7 +123,8 @@ namespace BooksReadTracker.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["Categories"] = _categories;
+            var categories = await _context.Categories.ToListAsync();
+            ViewData["Categories"] = new SelectList(categories, "Id", "Name", book.CategoryId);
             return View(book);
         }
 
@@ -139,7 +141,8 @@ namespace BooksReadTracker.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = _categories;
+            var categories = await _context.Categories.ToListAsync();
+            ViewData["Categories"] = new SelectList(categories, "Id", "Name", book.CategoryId);
             return View(book);
         }
 
@@ -148,12 +151,31 @@ namespace BooksReadTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FilePath,CategoryId")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,FilePath,CategoryId, Notes, PagesRead, TotalPages")] Book book)
         {
             if (id != book.Id)
             {
                 return NotFound();
             }
+
+            var userId = await GetCurrentUserId();
+            book.UserId = userId;
+
+            ModelState.Clear();
+
+            if (!Int32.TryParse(book.PagesRead, out int pagesRead) ||
+       !Int32.TryParse(book.TotalPages, out int totalPages))
+            {
+                ModelState.AddModelError("PagesRead", "Pages read and total pages must be valid integers");
+
+            }
+            else if (pagesRead > totalPages)
+            {
+
+                ModelState.AddModelError("PagesRead", "Pages read must be less than or equal to total pages");
+
+            }
+
 
             if (ModelState.IsValid)
             {
@@ -175,7 +197,10 @@ namespace BooksReadTracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Categories"] = _categories;
+
+            var categories = await _context.Categories.ToListAsync();
+            ViewData["Categories"] = new SelectList(categories, "Id", "Name", book.CategoryId);
+
             return View(book);
         }
 
