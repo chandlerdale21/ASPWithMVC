@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestBooksReadTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f25f518816288d6c3376ecce4ce8cb8aece594f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb28cc576ea427b28f5088523f4c392166ed2769")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestBooksReadTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestBooksReadTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

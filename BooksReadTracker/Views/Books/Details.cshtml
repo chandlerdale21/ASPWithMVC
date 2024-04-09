@@ -19,7 +19,7 @@
     </dl>
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FilePath)
+            Book Cover
         </dt>
         <dd class="col-sm-10">
             @if (!string.IsNullOrWhiteSpace(Model.FilePath))
@@ -41,6 +41,23 @@
                 var categoryName = @Model?.Category?.Name ?? "No Category";
             }
             @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class="col-sm-10">
+           
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Pages Read
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model=>model.PagesRead) / @Html.DisplayFor(model => model.TotalPages)
         </dd>
     </dl>
 </div>

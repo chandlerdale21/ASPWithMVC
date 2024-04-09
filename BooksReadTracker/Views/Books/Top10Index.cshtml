@@ -4,32 +4,85 @@
     ViewData["Title"] = "Top10Index";
 }
 
-<h1>Top10Index</h1>
+<style>
+    .custom-col-padding {
+        padding-right: 5px;
+        max-width: 220px;
+    }
 
-@* <p>
-    <a asp-action="Create">Create New</a>
-</p> *@
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-      @*       <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td> *@
-        </tr>
-}
-    </tbody>
-</table>
+    .margin-left {
+        margin-left: 6px;
+    }
+
+    .book-cover {
+        width: 12rem;
+        height: 15rem;
+        border-radius: 10px;
+    }
+
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+        .image-container img {
+            display: block;
+            width: 12rem;
+            height: 15rem;
+            border-radius: 10px;
+        }
+
+    .icon-delete {
+        position: absolute;
+        top: 15.5rem;
+        right: 5px;
+    }
+
+    .icon-edit {
+        position: absolute;
+        top: 15.5rem;
+        right: 35px;
+    }
+
+    .icon-information {
+        position: absolute;
+        top: 15.5rem;
+        right: 65px;
+    }
+
+    .no-word-break {
+        overflow-wrap: break-word;
+    }
+
+    .title-container {
+        max-height: 3.6rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+
+<h1 class="pb-4">Trending Reads</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-3 custom-col-padding">
+                <div>
+                    <h6 class="margin-left title-container" style="word-break: break-all !important;">@item.Name</h6>
+                    <div class="image-container">
+                        
+                        <img src="@item.FilePath ?? 'https://talkimages.blob.core.windows.net/mssaccad13/noImage.png'" class="card-img-top book-cover" alt="@item.Name" onerror="this.src='https://talkimages.blob.core.windows.net/mssaccad13/noImage.png'">
+                    </div>
+                    <div>
+                        <p class="margin-left">@item.Category.Name</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
